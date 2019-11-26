@@ -33,6 +33,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\AxInterop.ShockwaveFlashObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Resources\Interop.ShockwaveFlashObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="Svt.Caspar, Version=1.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\Svt.Caspar.dll</HintPath>
+    </Reference>
+    <Reference Include="Svt.Caspar.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\Svt.Caspar.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Svt.Network, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\Svt.Network.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -62,6 +83,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +97,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AxInterop.ShockwaveFlashObjects.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Interop.ShockwaveFlashObjects.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Svt.Caspar.Controls.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Svt.Caspar.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Svt.Network.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
