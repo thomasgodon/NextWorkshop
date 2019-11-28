@@ -14,13 +14,14 @@ namespace NextWorkshop
     public partial class Form1 : Form
     {
         private CasparDevice _device = new CasparDevice();
+        private GameController _controller = new GameController();
 
         public Form1()
         {
             InitializeComponent();
 
             // init caspar device
-            _device.Settings.Hostname = "172.20.130.69";
+            _device.Settings.Hostname = "10.30.2.1";
             _device.Settings.Port = 5250;
             _device.Settings.AutoConnect = true;
 
@@ -42,6 +43,28 @@ namespace NextWorkshop
                     this.SetTitleBar("Disconnected");
                 }
             });
+
+            // set joystick button
+            _controller.JoystickButtonPressed += new EventHandler<GameController.JoyStickUpdateArgs>(delegate (object sender, GameController.JoyStickUpdateArgs e) 
+            {
+                Console.WriteLine(e.Data.Offset);
+
+                if (e.Data.Offset == SharpDX.DirectInput.JoystickOffset.Buttons1)
+                {
+                    //this.LoadGraphic();
+
+                    _device.Channels[0].Load(0, "AMB", true);
+                    _device.Channels[0].Play(0);
+                }
+                else if(e.Data.Offset == SharpDX.DirectInput.JoystickOffset.Buttons0)
+                {
+                    _device.Channels[0].Clear();
+                }
+                else if (e.Data.Offset == SharpDX.DirectInput.JoystickOffset.Buttons5)
+                {
+                    _device.Channels[0].CG.Next(0);
+                }
+            });
         }
 
         private void SetTitleBar(string Text)
@@ -59,6 +82,11 @@ namespace NextWorkshop
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
+        {
+            this.LoadGraphic();
+        }
+
+        private void LoadGraphic()
         {
             // create datacollection
             CasparCGDataCollection DataCollection = new CasparCGDataCollection();
